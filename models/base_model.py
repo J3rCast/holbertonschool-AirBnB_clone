@@ -5,6 +5,7 @@
 
 
 import uuid
+import datetime
 
 class BaseModel:
     """This is an abstract class that defines attributes
@@ -15,4 +16,6 @@ class BaseModel:
         Args:
             id (string): Unique id of the object
         """
-        self.id = id
+        self.id = uuid.uuid4()
+        self.created_at = datetime.datetime()
+        self.updated_at = datetime.datetime()
