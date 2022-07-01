@@ -14,3 +14,4 @@ class BaseModel:
         Args:
             id (string): Unique id of the object
         """
+        self.id = id
