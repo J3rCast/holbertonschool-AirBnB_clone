@@ -29,7 +29,7 @@ class BaseModel:
     def to_dict(self):
         """Returns a dictionary containing all
         keys/values of __dict__ of the instance
-        and add __class__ key to this dictionary
+        and add __class__ key to this dictionary.
         """
         new_dict = self.__dict__
         new_dict['__class__'] = type(self).__name__
