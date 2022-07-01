@@ -4,6 +4,8 @@
 """
 
 
+import uuid
+
 class BaseModel:
     """This is an abstract class that defines attributes
     for other classes.
