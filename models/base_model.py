@@ -7,6 +7,7 @@
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     """This is an abstract class that defines attributes
     for other classes.
@@ -28,6 +29,7 @@ class BaseModel:
     def to_dict(self):
         """Returns a dictionary containing all
         keys/values of __dict__ of the instance
+        and add __class__ key to this dictionary
         """
         new_dict = self.__dict__
         new_dict['__class__'] = type(self).__name__
@@ -39,5 +41,5 @@ class BaseModel:
         """Magic method that return a string to use
         when print function is called.
         """
-        return "[{}] ({}) {}".format(type(self).__name__,\
-            self.id, self.__dict__)
+        return "[{}] ({}) {}"\
+            .format(type(self).__name__, self.id, self.__dict__)
