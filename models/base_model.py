@@ -44,7 +44,7 @@ class BaseModel:
         and add __class__ key to this dictionary.
         """
         new_dict = dict(self.__dict__)
-        new_dict['__class__'] = type(self).__name__
+        new_dict['__class__'] = self.__class__.__name__
         new_dict['created_at'] = new_dict['created_at'].isoformat()
         new_dict['updated_at'] = new_dict['updated_at'].isoformat()
         return new_dict
@@ -54,4 +54,4 @@ class BaseModel:
         when print function is called.
         """
         return "[{}] ({}) {}"\
-            .format(type(self).__name__, self.id, self.__dict__)
+            .format(self.__class__.__name__, self.id, str(self.__dict__))
