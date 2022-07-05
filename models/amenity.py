@@ -9,4 +9,4 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """This class inherits from BaseModel."""
-    name = ""
+    name = str()
