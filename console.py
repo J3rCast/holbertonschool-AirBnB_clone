@@ -69,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         key =  cmd_argv[0] + '.' + cmd_argv[1]
 
         if all_objs.get(key, False):
-            print(all_objs[key])
+            print("hola")
         else:
             print("** no instance found **")
 
