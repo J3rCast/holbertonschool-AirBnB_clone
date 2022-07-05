@@ -8,7 +8,6 @@ import json
 from os import path
 
 
-
 class FileStorage:
     """This class serializes and deserializes
     instances and JSON files.
