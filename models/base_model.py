@@ -32,6 +32,13 @@ class BaseModel:
             self.updated_at = datetime.now()
             storage.new(self)
 
+    def __str__(self):
+        """Magic method that return a string to use
+        when print function is called.
+        """
+        return "[{:s}] ({:s}) {:s}"\
+            .format(type(self).__name__, self.id, str(self.__dict__))
+
     def save(self):
         """Update the updated_at attribute.
         """
@@ -48,10 +55,3 @@ class BaseModel:
         new_dict['created_at'] = new_dict['created_at'].isoformat()
         new_dict['updated_at'] = new_dict['updated_at'].isoformat()
         return new_dict
-
-    def __str__(self):
-        """Magic method that return a string to use
-        when print function is called.
-        """
-        return "[{:s}] ({:s}) {:s}"\
-            .format(type(self).__name__, self.id, str(self.__dict__))

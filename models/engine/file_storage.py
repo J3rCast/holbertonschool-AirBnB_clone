@@ -27,12 +27,15 @@ class FileStorage:
             obj: object to set in __object
         """
         key_name = type(obj).__name__ + "." + obj.id
-        FileStorage.__objects[key_name] = obj.to_dict()
+        FileStorage.__objects[key_name] = obj
 
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)."""
-        with open(FileStorage.__file_path, mode='w', encoding='utf-8') as f:
-            json.dump(FileStorage.__objects, f)
+        new_dict = {}
+        for key in self.__objects:
+            new_dict[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, 'w') as f:
+            json.dump(new_dict, f)
 
     def reload(self):
         """deserializes the JSON file to __objects."""
@@ -42,7 +45,10 @@ class FileStorage:
         from ..review import Review
         from ..state import State
         from ..user import User
+        from models.base_model import BaseModel
         file = FileStorage.__file_path
         if path.isfile(file):
-            with open(file, mode='r', encoding='utf-8') as f:
-                FileStorage.__objects = json.load(f)
+            with open(self.__file_path, 'r') as f:
+                for key, value in (json.load(f)).items():
+                    value = eval(value['__class__'])(**value)
+                    self.__objects[key] = value
