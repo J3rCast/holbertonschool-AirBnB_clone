@@ -4,6 +4,9 @@ called Place.
 """
 
 
+from modle.base_model import BaseModel
+
+
 class Place(BaseModel):
     """This class inherits from BaseModel."""
     name = ""

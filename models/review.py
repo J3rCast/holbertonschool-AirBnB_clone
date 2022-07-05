@@ -4,6 +4,9 @@ called Review.
 """
 
 
+from models.base_model import BaseModel
+
+
 class Review(BaseModel):
     """This class inherits from BaseModel."""
     user_id = ""
