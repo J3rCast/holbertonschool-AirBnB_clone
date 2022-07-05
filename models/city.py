@@ -4,7 +4,7 @@ called City.
 """
 
 
-from model.base_models import BaseModel
+from model.base_model import BaseModel
 
 
 class City(BaseModel):
