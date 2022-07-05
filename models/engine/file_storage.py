@@ -6,6 +6,13 @@ SON file and deserializes JSON file to instances:
 
 import json
 from os import path
+from ..amenity import amenity
+from ..base_model import BaseModel
+from ..city import City
+from ..place import Place
+from ..review import Review
+from ..state import State
+from ..user import User
 
 
 class FileStorage:
