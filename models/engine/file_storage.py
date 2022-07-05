@@ -36,9 +36,8 @@ class FileStorage:
 
     def reload(self):
         """deserializes the JSON file to __objects."""
-        from ..amenity import amenity
-        from ..base_model import BaseModel
-        from ..city import City
+        from models.amenity import amenity
+        from models.city import City
         from ..place import Place
         from ..review import Review
         from ..state import State
