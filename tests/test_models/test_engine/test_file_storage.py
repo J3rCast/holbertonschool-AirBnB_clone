@@ -7,6 +7,7 @@ from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
 from os import path, remove
+import pycodestyle
 import json
 
 
@@ -21,24 +22,24 @@ class Test_File_Storage(unittest.TestCase):
             pass
         FileStorage.__objects = {}
 
-    def test_all(self):
-        """Check if it return a dictionary."""
-        self.storage = FileStorage()
-        self.assertIsInstance(self.storage.all(), dict)
-
-    def test_creation(self):
-        """This test validate that creation 
-        proccess was correct.
-        """
-        self.storage = FileStorage()
-        self.assertEqual(self.storage.save(), None)
-
     def tearDown(self):
         """ Tear down for all methods """
         try:
             remove("file.json")
         except Exception:
             pass
+
+    def test_all(self):
+        """Check if it return a dictionary."""
+        self.storage = FileStorage()
+        self.assertIsInstance(self.storage.all(), dict)
+
+    def test_style_check(self):
+        """Test of pep8"""
+        st = pycodestyle.StyleGuide(quiet=True)
+        r = st.check_files(['models/engine/file_storage.py'])
+        self.assertEqual(r.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
     def test_new(self):
         """Check if the object is in __object."""
