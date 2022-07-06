@@ -10,16 +10,8 @@ from os import path, remove
 import json
 
 
-class Test_all(unittest.TestCase):
+class Test_File_Storage(unittest.TestCase):
     """Test for the all method."""
-
-    def test_all(self):
-        """Check if it return a dictionary."""
-        self.storage = FileStorage()
-        self.assertIsInstance(self.storage.all(), dict)
-
-class Test_new(unittest.TestCase):
-    """Test for the new method."""
 
     def setUp(self):
         """Set up for every test"""
@@ -28,6 +20,15 @@ class Test_new(unittest.TestCase):
         except Exception:
             pass
         FileStorage.__objects = {}
+
+    def test_module_documentation(self):
+        """ Test if FileStorage module is documented."""
+        self.assertTrue(FileStorage.__doc__)
+
+    def test_all(self):
+        """Check if it return a dictionary."""
+        self.storage = FileStorage()
+        self.assertIsInstance(self.storage.all(), dict)
 
     def tearDown(self):
         """ Tear down for all methods """
