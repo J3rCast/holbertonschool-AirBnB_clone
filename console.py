@@ -16,6 +16,7 @@ class HBNBCommand(cmd.Cmd):
     """ Class HBNB to read command """
     prompt = '(hbnb) '
     __all_count = 0
+    __count = len(storage._FileStorage__objects)
 
     def emptyline(self):
         """Pass if no command is given"""
@@ -217,6 +218,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
 
+    def do_count(self, arg):
+        """Reatrive the number of instances of a class."""
+        HBNBCommand.__count = len(storage._FileStorage__objects)
+        print(HBNBCommand.__count)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
