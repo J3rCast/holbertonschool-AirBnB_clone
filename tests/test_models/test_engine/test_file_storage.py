@@ -6,6 +6,8 @@ import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
+from os import path, remove
+import json
 
 
 class Test_all(unittest.TestCase):
@@ -21,7 +23,18 @@ class Test_new(unittest.TestCase):
 
     def setUp(self):
         """Set up for every test"""
+        try:
+            remove("file.json")
+        except Exception:
+            pass
         FileStorage.__objects = {}
+
+    def tearDown(self):
+        """ Tear down for all methods """
+        try:
+            remove("file.json")
+        except Exception:
+            pass
 
     def test_new(self):
         """Check if the object is in __object."""
@@ -30,3 +43,13 @@ class Test_new(unittest.TestCase):
         ob_dict = self.storage.all()
         key = "{}.{}".format(type(self.user).__name__, self.user.id)
         self.assertTrue(key in ob_dict.keys())
+
+    def test_save(self):
+        """Check the save method."""
+        MyModel = BaseModel()
+        self.storage = FileStorage()
+        self.storage.save()
+        self.path = self.storage._FileStorage__file_path
+        with open(self.path) as file:
+            file_dict = json.load(file)
+        self.assertIn(MyModel.to_dict(), file_dict.values())
