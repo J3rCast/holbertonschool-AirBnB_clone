@@ -4,6 +4,7 @@
 import sys
 import cmd
 from models import storage
+from models.user import User
 from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
