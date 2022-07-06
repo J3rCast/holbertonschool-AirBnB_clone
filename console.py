@@ -16,7 +16,7 @@ class HBNBCommand(cmd.Cmd):
     """ Class HBNB to read command """
     prompt = '(hbnb) '
     __all_count = 0
-    __count = len(storage._FileStorage__objects)
+    __count = 0
 
     def emptyline(self):
         """Pass if no command is given"""
