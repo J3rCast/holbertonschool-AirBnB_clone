@@ -53,3 +53,13 @@ class Test_new(unittest.TestCase):
         with open(self.path) as file:
             file_dict = json.load(file)
         self.assertIn(MyModel.to_dict(), file_dict.values())
+
+    def test_reload_method(self):
+        """ Check the reload() method."""
+        self.storage = FileStorage()
+        MyModel = BaseModel()
+        self.storage.save()
+        self.storage.reload()
+        key = "BaseModel.{}".format(MyModel.id)
+        ob_dict = self.storage.all()
+        self.assertFalse(ob_dict[key] is MyModel)
