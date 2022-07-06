@@ -31,9 +31,9 @@ class FileStorage:
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)."""
         new_dict = {}
-        for key in self.__objects:
-            new_dict[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, 'w') as f:
+        for key in FileStorage.__objects:
+            new_dict[key] = FileStorage.__objects[key].to_dict()
+        with open(FileStorage.__file_path, 'w') as f:
             json.dump(new_dict, f)
 
     def reload(self):
@@ -47,7 +47,7 @@ class FileStorage:
         from models.base_model import BaseModel
         file = FileStorage.__file_path
         if path.isfile(file):
-            with open(self.__file_path, 'r') as f:
+            with open(FileStorage.__file_path, 'r') as f:
                 for key, value in (json.load(f)).items():
                     value = eval(value['__class__'])(**value)
-                    self.__objects[key] = value
+                    FileStorage.__objects[key] = value
