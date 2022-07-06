@@ -21,14 +21,17 @@ class Test_File_Storage(unittest.TestCase):
             pass
         FileStorage.__objects = {}
 
-    def test_module_documentation(self):
-        """ Test if FileStorage module is documented."""
-        self.assertTrue(FileStorage.__doc__)
-
     def test_all(self):
         """Check if it return a dictionary."""
         self.storage = FileStorage()
         self.assertIsInstance(self.storage.all(), dict)
+
+    def test_creation(self):
+        """This test validate that creation 
+        proccess was correct.
+        """
+        self.storage = FileStorage()
+        self.assertEqual(self.storage.save(), None)
 
     def tearDown(self):
         """ Tear down for all methods """
