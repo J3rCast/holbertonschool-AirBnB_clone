@@ -34,8 +34,8 @@ class Test_File_Storage(unittest.TestCase):
         self.storage = FileStorage()
         self.assertIsInstance(self.storage.all(), dict)
 
-    def test_style_check(self):
-        """Test of pep8"""
+    def test_pep8(self):
+        """Test of pep8."""
         st = pycodestyle.StyleGuide(quiet=True)
         r = st.check_files(['models/engine/file_storage.py'])
         self.assertEqual(r.total_errors, 0,
