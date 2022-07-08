@@ -21,6 +21,7 @@ class Test_non_existing_command(unittest.TestCase):
             st = f.getvalue()
             self.assertEqual(msg, st)
 
+
 class Test_help(unittest.TestCase):
     """ Tests the help commands """
 
@@ -28,7 +29,7 @@ class Test_help(unittest.TestCase):
         """ Set up for all methods """
         try:
             remove("file.json")
-        except:
+        except Exception:
             pass
         FileStorage._FileStorage__objects = {}
 
@@ -36,7 +37,7 @@ class Test_help(unittest.TestCase):
         """ Tear down for all methods """
         try:
             remove("file.json")
-        except:
+        except Exception:
             pass
 
     def test_help_help(self):
@@ -64,6 +65,7 @@ class Test_help(unittest.TestCase):
             st = f.getvalue()
             self.assertEqual(msg, st)
 
+
 class Test_create(unittest.TestCase):
     """ Tests the create commands """
 
@@ -71,7 +73,7 @@ class Test_create(unittest.TestCase):
         """ Set up for all methods """
         try:
             remove("file.json")
-        except:
+        except Exception:
             pass
         FileStorage._FileStorage__objects = {}
 
@@ -79,7 +81,7 @@ class Test_create(unittest.TestCase):
         """ Tear down for all methods """
         try:
             remove("file.json")
-        except:
+        except Exception:
             pass
 
     def test_create_no_class(self):
@@ -97,5 +99,3 @@ class Test_create(unittest.TestCase):
             HBNBCommand().onecmd("create MyModel")
             st = f.getvalue()
             self.assertEqual(msg, st)
-
-    
