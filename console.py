@@ -224,5 +224,6 @@ class HBNBCommand(cmd.Cmd):
         HBNBCommand.__count = len(storage._FileStorage__objects)
         print(HBNBCommand.__count)
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
