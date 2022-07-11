@@ -1,0 +1,12 @@
+header {
+	height: 70px;
+	width: 100%;
+	border-bottom-style: solid;
+	border-bottom: 1px solid #CCCCCC;
+}
+.logo {
+	background: url(../images/logo-hbnb.png) no-repeat center;
+	width: 150px;
+	height: 70px;
+	margin-left: 20px;
+}
